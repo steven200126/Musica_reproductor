@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="image" rel="icon" href="/public/img/Captura_de_pantalla_2023-06-22_174824-removebg-preview-removebg-preview.jpg">
+    <link rel="stylesheet" href="style.css">
+    <title>RetroCMusi</title>
+  </head>
+  <body>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles-js"></div>
+
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+  <header>
+    <h1>RetrocMusi</h1>
+    <p>¡Atrevete a Sentir la Buena Vibra!</p>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Canciones</a></li>
+        <li><a href="#">Genero</a></li>
+        <li><a href="#">Album</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="player">
+      <div id="cover-art"></div>
+      <div id="song-info"></div>
+      <audio id="audio-player" src="public/music/Photograph.mp3"></audio>
+      <audio id="audio-player" src="public/music/Starboy.mp3"></audio>
+      <audio id="audio-player" src="public/music/Stressed-Out.mp3"></audio>
+      <audio id="audio-player" src="public/music/Con-Calma.mp3"></audio>
+      <audio id="audio-player" src="public/music/BYOB.mp3"></audio>
+      <audio id="audio-player" src="public/music/Come-and-Get-Your-Love.mp3"></audio>
+      <audio id="audio-player" src="public/music/Callaita.mp3"></audio>
+      <audio id="audio-player" src="public/music/New-Rules.mp3"></audio>
+      <div id="controls">
+        <button id="play" onclick="togglePlay()">▶</button>
+      </div>
+      <div id="progress">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress-bar" min="0" max="100" value="0" onchange="seekSong()">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div id="song-list">
+      <ul id="song-list-api">
+        <!-- <li onclick="loadSong('public/music/Photograph.mp3', 'Edd Sheeran', 'public/img/poster-photograph.jpg')">
+          <img src="public/img/poster-photograph.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>Photograph</h3>
+            <p>Edd Sheeran</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/Starboy.mp3', 'The Weekend', 'public/img/poster-starboy.jpg')">
+          <img src="public/img/poster-starboy.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>Starboy</h3>
+            <p>The Weekend</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/Stressed-Out.mp3', 'Twenty One Pilots', 'public/img/poster-stressed.out.jpg')">
+          <img src="public/img/poster-stressed.out.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>Stressed Out</h3>
+            <p>Twenty One Pilots</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/Con-Calma.mp3', 'Daddy Yanke', 'public/img/poster-con.calma.jpg')">
+          <img src="public/img/poster-con.calma.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>Con Calma</h3>
+            <p>Daddy Yanke</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/BYOB.mp3', 'System of a Down', 'public/img/poster-B.Y.O.B.jpg')">
+          <img src="public/img/poster-B.Y.O.B.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>B.Y.O.B</h3>
+            <p>System of a Down</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/Come-and-Get-Your-Love.mp3', 'Redbone', 'public/img/poster-redbone.jpg')">
+          <img src="public/img/poster-redbone.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>Come adn Get Your Love</h3>
+            <p>Redbone</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/Callaita.mp3', 'Bad Bunny', 'public/img/poster-callaita.jpg')">
+          <img src="public/img/poster-callaita.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>Callaita</h3>
+            <p>Bad Bunny</p>
+          </div>
+        </li>
+        <li onclick="loadSong('public/music/New-Rules.mp3', 'Dua Lipa', 'public/img/poster-new.rules.jpg')">
+          <img src="public/img/poster-new.rules.jpg" alt="Portada">
+          <div class="song-info">
+            <h3>New Rules</h3>
+            <p>Dua Lipa</p>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </main>
+    
+  <script src="/main.js"></script>
+  </body>
+</html>
